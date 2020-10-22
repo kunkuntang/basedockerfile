@@ -1,5 +1,5 @@
 # 指定基础镜像
-FROM centos8
+FROM centos:centos7
 
 # 镜像信息
 LABEL email="kuntang@163.com"
