@@ -1,0 +1,30 @@
+# 指定基础镜像
+FROM centos8
+
+# 镜像信息
+LABEL email="kuntang@163.com"
+LABEL author="kuntang"
+LABEL version="1.0"
+LABEL description="This is a image of dockerfile-example"
+
+# 先更新系统依赖
+RUN yum update -y
+
+# 安装 NVM
+RUN echo 199.232.68.133 raw.githubusercontent.com >> /etc/hosts
+RUN echo 199.232.68.133 user-images.githubusercontent.com >> /etc/hosts
+RUN echo 199.232.68.133 avatars2.githubusercontent.com >> /etc/hosts
+RUN echo 199.232.68.133 avatars1.githubusercontent.com >> /etc/hosts
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+RUN echo export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node >> ~/.bash_profile
+RUN source ~/.bash_profile
+
+# 安装 YARN
+RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+RUN yum install yarn -y
+
+# 安装 GIT
+RUN yum install git -y
+
+# 对外暴露端口
+EXPOSE 8080 80 22 443
