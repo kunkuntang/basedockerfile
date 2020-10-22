@@ -15,6 +15,7 @@ RUN echo 199.232.68.133 raw.githubusercontent.com >> /etc/hosts
 RUN echo 199.232.68.133 user-images.githubusercontent.com >> /etc/hosts
 RUN echo 199.232.68.133 avatars2.githubusercontent.com >> /etc/hosts
 RUN echo 199.232.68.133 avatars1.githubusercontent.com >> /etc/hosts
+
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 RUN echo export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node >> ~/.bash_profile
 RUN source ~/.bash_profile
